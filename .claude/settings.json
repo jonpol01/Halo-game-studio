@@ -1,0 +1,50 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Edit(src/**)",
+      "Edit(assets/**)",
+      "Edit(design/**)",
+      "Edit(tests/**)",
+      "Edit(prototypes/**)",
+      "Edit(production/**)",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git add*)",
+      "Bash(git commit*)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git reset --hard*)",
+      "Bash(rm -rf /)*",
+      "Edit(.claude/settings.json)",
+      "Edit(CLAUDE.md)"
+    ]
+  },
+  "hooks": {
+    "pre-commit": "hooks/pre-commit.sh",
+    "post-commit": "hooks/post-commit.sh",
+    "on-session-start": "hooks/session-start.sh"
+  },
+  "agents": {
+    "directors": {
+      "model": "opus",
+      "approval_required": true
+    },
+    "leads": {
+      "model": "sonnet",
+      "approval_required": false
+    },
+    "specialists": {
+      "model": "sonnet",
+      "approval_required": false
+    }
+  },
+  "safety": {
+    "max_file_size_lines": 300,
+    "require_tests_for_src": true,
+    "protected_branches": ["main", "release/*"],
+    "require_review_for": ["src/core/**", "CLAUDE.md", ".claude/**"]
+  }
+}

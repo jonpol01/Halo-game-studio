@@ -1,0 +1,10 @@
+{
+  "_comment": "Asset manifest — every asset in this directory must have an entry here",
+  "version": "1.0.0",
+  "assets": {
+    "art": [],
+    "audio": [],
+    "vfx": [],
+    "shaders": []
+  }
+}
